@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Q-Insight</title>
+    <meta name="description" content="Secure login to access Q-Insight dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="30" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: var(--medium-gray);
+            font-size: 1rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: white;
+        }
+
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-blue);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .divider span {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .demo-credentials {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .demo-credentials h4 {
+            color: #92400e;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+
+        .credential-value {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+        }
+
+        .credentials-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .credentials-table th {
+            background: var(--primary-navy);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .credentials-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .credentials-table tr:nth-child(even) {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .credentials-table tr:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .demo-note {
+            font-size: 0.85rem;
+            color: #92400e;
+            margin: 0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .forgot-password a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid #fecaca;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            color: #059669;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid #a7f3d0;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                margin: 1rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .login-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">Q</div>
+                <h1 class="login-title">Welcome Back</h1>
+                <p class="login-subtitle">Sign in to access Q-Insight dashboard</p>
+            </div>
+
+            <div id="error-message" class="error-message">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Invalid username or password. Please try again.
+            </div>
+
+            <div id="success-message" class="success-message">
+                <i class="fas fa-check-circle me-2"></i>
+                Login successful! Redirecting...
+            </div>
+
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="username" class="form-input" placeholder="Username or Email" required>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="password" class="form-input" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="login-btn" id="login-btn">
+                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                </button>
+            </form>
+
+            <div class="forgot-password">
+                <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+            </div>
+
+            <div class="demo-credentials">
+                <h4><i class="fas fa-info-circle"></i>Demo Credentials</h4>
+                <table class="credentials-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="credential-value">admin</span></td>
+                            <td><span class="credential-value">admin123</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="credential-value">demo</span></td>
+                            <td><span class="credential-value">demo</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="credential-value">student</span></td>
+                            <td><span class="credential-value">demo</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="credential-value">teacher</span></td>
+                            <td><span class="credential-value">demo</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="credential-value">user</span></td>
+                            <td><span class="credential-value">demo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="demo-note">Or use any username with password: <span class="credential-value">demo</span></p>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Login page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLogin();
+        });
+
+        function initializeLogin() {
+            const loginForm = document.getElementById('login-form');
+            const loginBtn = document.getElementById('login-btn');
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                // Hide previous messages
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+
+                // Show loading state
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing In...';
+
+                // Simulate login validation (demo purposes)
+                setTimeout(() => {
+                    if (validateCredentials(username, password)) {
+                        successMessage.style.display = 'block';
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+                    } else {
+                        errorMessage.style.display = 'block';
+                        loginBtn.disabled = false;
+                        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Sign In';
+                    }
+                }, 1000);
+            });
+        }
+
+        function validateCredentials(username, password) {
+            // Demo validation - accept these credentials
+            const validCredentials = [
+                { username: 'admin', password: 'admin123' },
+                { username: 'demo', password: 'demo' },
+                { username: 'student', password: 'demo' },
+                { username: 'teacher', password: 'demo' },
+                { username: 'user', password: 'demo' }
+            ];
+
+            // Check specific credentials
+            const isValidSpecific = validCredentials.some(cred =>
+                cred.username === username && cred.password === password
+            );
+
+            // Or accept any username with password "demo"
+            const isValidDemo = password === 'demo';
+
+            return isValidSpecific || isValidDemo;
+        }
+
+        function showForgotPassword() {
+            alert('Forgot Password feature would typically send a reset email.\n\nFor demo purposes, use:\nUsername: admin\nPassword: admin123');
+        }
+    </script>
+</body>
+</html>

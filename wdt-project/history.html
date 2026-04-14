@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Q-Insight</title>
+    <meta name="description" content="View and manage your analyzed question papers history.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">Q</div>
+                <span class="logo-text">Q-Insight</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analyze.html">Analyze</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="history.html" class="active">History</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">Q</div>
+                    <span class="sidebar-logo-text">Q-Insight</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-nav-item">
+                    <a href="index.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-home"></i></span>
+                        Home
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="analyze.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-search"></i></span>
+                        Analyze
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="insights.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-lightbulb"></i></span>
+                        Insights
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="history.html" class="sidebar-nav-link active">
+                        <span class="sidebar-nav-icon"><i class="fas fa-history"></i></span>
+                        History
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="settings.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-cog"></i></span>
+                        Settings
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="dashboard-title">Analysis History</h1>
+                    <p style="color: var(--medium-gray); margin: 0.5rem 0 0 0;">
+                        View and manage all your previously analyzed question papers
+                    </p>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">U</div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 0.5rem;">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-navy);" data-counter="247">0</div>
+                        <div style="color: var(--medium-gray);">Total Papers</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-navy);" data-counter="189">0</div>
+                        <div style="color: var(--medium-gray);">Completed</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div style="font-size: 2rem; color: var(--warning); margin-bottom: 0.5rem;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-navy);" data-counter="58">0</div>
+                        <div style="color: var(--medium-gray);">This Month</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div style="font-size: 2rem; color: var(--error); margin-bottom: 0.5rem;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary-navy);" data-counter="4.8">0</div>
+                        <div style="color: var(--medium-gray);">Avg Rating</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Filters -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search papers by name, subject, or topic...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">All Papers</button>
+                        <button class="filter-btn" data-filter="recent">Recent</button>
+                        <button class="filter-btn" data-filter="computer-science">Computer Science</button>
+                        <button class="filter-btn" data-filter="mathematics">Mathematics</button>
+                        <button class="filter-btn" data-filter="physics">Physics</button>
+                        <button class="filter-btn" data-filter="high-difficulty">High Difficulty</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Papers Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-table me-2"></i>Analyzed Papers</h3>
+                </div>
+                <div class="card-body">
+                    <div style="overflow-x: auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all"></th>
+                                    <th>Paper Name</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Difficulty</th>
+                                    <th>Questions</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="papers-table">
+                                <!-- Sample data rows -->
+                                <tr class="searchable-item filterable-item" data-category="computer-science">
+                                    <td><input type="checkbox" class="paper-checkbox"></td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <div style="width: 32px; height: 32px; background: var(--gradient-blue); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CS</div>
+                                            <div>
+                                                <div style="font-weight: 600; color: var(--primary-navy);">CS Final Exam 2024</div>
+                                                <div style="color: var(--medium-gray); font-size: 0.875rem;">Database Management, Algorithms</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Computer Science</td>
+                                    <td>March 15, 2024</td>
+                                    <td><span style="background: var(--error); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Hard</span></td>
+                                    <td>45</td>
+                                    <td><span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Completed</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 0.5rem;">
+                                            <button class="btn btn-sm" style="background: var(--primary-blue); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="viewPaper(this)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--warning); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="reanalyzePaper(this)">
+                                                <i class="fas fa-redo"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--error); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="deletePaper(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="searchable-item filterable-item" data-category="mathematics">
+                                    <td><input type="checkbox" class="paper-checkbox"></td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <div style="width: 32px; height: 32px; background: var(--gradient-blue); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">M</div>
+                                            <div>
+                                                <div style="font-weight: 600; color: var(--primary-navy);">Mathematics Mid-term</div>
+                                                <div style="color: var(--medium-gray); font-size: 0.875rem;">Calculus, Linear Algebra</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Mathematics</td>
+                                    <td>March 10, 2024</td>
+                                    <td><span style="background: var(--warning); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Medium</span></td>
+                                    <td>32</td>
+                                    <td><span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Completed</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 0.5rem;">
+                                            <button class="btn btn-sm" style="background: var(--primary-blue); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="viewPaper(this)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--warning); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="reanalyzePaper(this)">
+                                                <i class="fas fa-redo"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--error); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="deletePaper(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="searchable-item filterable-item" data-category="physics">
+                                    <td><input type="checkbox" class="paper-checkbox"></td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <div style="width: 32px; height: 32px; background: var(--gradient-blue); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">P</div>
+                                            <div>
+                                                <div style="font-weight: 600; color: var(--primary-navy);">Physics Lab Exam</div>
+                                                <div style="color: var(--medium-gray); font-size: 0.875rem;">Mechanics, Optics</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Physics</td>
+                                    <td>March 5, 2024</td>
+                                    <td><span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Easy</span></td>
+                                    <td>28</td>
+                                    <td><span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Completed</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 0.5rem;">
+                                            <button class="btn btn-sm" style="background: var(--primary-blue); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="viewPaper(this)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--warning); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="reanalyzePaper(this)">
+                                                <i class="fas fa-redo"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--error); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="deletePaper(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="searchable-item filterable-item" data-category="computer-science">
+                                    <td><input type="checkbox" class="paper-checkbox"></td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <div style="width: 32px; height: 32px; background: var(--gradient-blue); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CS</div>
+                                            <div>
+                                                <div style="font-weight: 600; color: var(--primary-navy);">Data Structures Quiz</div>
+                                                <div style="color: var(--medium-gray); font-size: 0.875rem;">Trees, Graphs, Sorting</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Computer Science</td>
+                                    <td>February 28, 2024</td>
+                                    <td><span style="background: var(--warning); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Medium</span></td>
+                                    <td>20</td>
+                                    <td><span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Completed</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 0.5rem;">
+                                            <button class="btn btn-sm" style="background: var(--primary-blue); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="viewPaper(this)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--warning); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="reanalyzePaper(this)">
+                                                <i class="fas fa-redo"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--error); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="deletePaper(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="searchable-item filterable-item" data-category="mathematics">
+                                    <td><input type="checkbox" class="paper-checkbox"></td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <div style="width: 32px; height: 32px; background: var(--gradient-blue); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">M</div>
+                                            <div>
+                                                <div style="font-weight: 600; color: var(--primary-navy);">Statistics Assignment</div>
+                                                <div style="color: var(--medium-gray); font-size: 0.875rem;">Probability, Data Analysis</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Mathematics</td>
+                                    <td>February 20, 2024</td>
+                                    <td><span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Easy</span></td>
+                                    <td>15</td>
+                                    <td><span style="background: var(--success); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 500;">Completed</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 0.5rem;">
+                                            <button class="btn btn-sm" style="background: var(--primary-blue); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="viewPaper(this)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--warning); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="reanalyzePaper(this)">
+                                                <i class="fas fa-redo"></i>
+                                            </button>
+                                            <button class="btn btn-sm" style="background: var(--error); color: white; border: none; padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer;" onclick="deletePaper(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Bulk Actions -->
+                <div class="card-footer">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div id="bulk-actions" style="display: none;">
+                            <span style="margin-right: 1rem; color: var(--medium-gray);">Selected: <span id="selected-count">0</span></span>
+                            <button class="btn btn-sm" style="background: var(--error); color: white; border: none; margin-right: 0.5rem;" onclick="bulkDelete()">
+                                <i class="fas fa-trash me-1"></i>Delete Selected
+                            </button>
+                            <button class="btn btn-sm" style="background: var(--warning); color: white; border: none;" onclick="bulkExport()">
+                                <i class="fas fa-download me-1"></i>Export Selected
+                            </button>
+                        </div>
+                        <div style="margin-left: auto;">
+                            <button class="btn btn-secondary btn-sm" onclick="loadMorePapers()">
+                                <i class="fas fa-plus me-1"></i>Load More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-clock me-2"></i>Recent Activity</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md);">
+                            <div style="width: 40px; height: 40px; background: var(--gradient-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: var(--primary-navy);">CS Final Exam 2024 uploaded</div>
+                                <div style="color: var(--medium-gray); font-size: 0.875rem;">Analysis completed successfully • 2 minutes ago</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md);">
+                            <div style="width: 40px; height: 40px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: var(--primary-navy);">Mathematics Mid-term analysis completed</div>
+                                <div style="color: var(--medium-gray); font-size: 0.875rem;">High difficulty detected • 1 hour ago</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md);">
+                            <div style="width: 40px; height: 40px; background: var(--warning); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-share"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: var(--primary-navy);">Physics Lab Exam insights shared</div>
+                                <div style="color: var(--medium-gray); font-size: 0.875rem;">Report exported to PDF • 3 hours ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // History page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBulkActions();
+        });
+
+        function initializeBulkActions() {
+            const selectAllCheckbox = document.getElementById('select-all');
+            const paperCheckboxes = document.querySelectorAll('.paper-checkbox');
+            const bulkActions = document.getElementById('bulk-actions');
+            const selectedCount = document.getElementById('selected-count');
+
+            selectAllCheckbox.addEventListener('change', function() {
+                paperCheckboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+                updateBulkActions();
+            });
+
+            paperCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateBulkActions);
+            });
+
+            function updateBulkActions() {
+                const checkedBoxes = document.querySelectorAll('.paper-checkbox:checked');
+                const count = checkedBoxes.length;
+
+                selectedCount.textContent = count;
+
+                if (count > 0) {
+                    bulkActions.style.display = 'block';
+                } else {
+                    bulkActions.style.display = 'none';
+                }
+
+                // Update select all checkbox state
+                selectAllCheckbox.checked = count === paperCheckboxes.length && count > 0;
+                selectAllCheckbox.indeterminate = count > 0 && count < paperCheckboxes.length;
+            }
+        }
+
+        function viewPaper(button) {
+            const row = button.closest('tr');
+            const paperName = row.querySelector('td:nth-child(2) div div').textContent;
+            showNotification(`Viewing ${paperName}`, 'info');
+            // In a real app, this would navigate to the detailed view
+        }
+
+        function reanalyzePaper(button) {
+            const row = button.closest('tr');
+            const paperName = row.querySelector('td:nth-child(2) div div').textContent;
+            showNotification(`Re-analyzing ${paperName}...`, 'info');
+            setTimeout(() => {
+                showNotification('Re-analysis completed!', 'success');
+            }, 2000);
+        }
+
+        function deletePaper(button) {
+            const row = button.closest('tr');
+            const paperName = row.querySelector('td:nth-child(2) div div').textContent;
+
+            if (confirm(`Are you sure you want to delete "${paperName}"?`)) {
+                row.remove();
+                showNotification(`${paperName} deleted successfully`, 'success');
+            }
+        }
+
+        function bulkDelete() {
+            const selectedCheckboxes = document.querySelectorAll('.paper-checkbox:checked');
+            const count = selectedCheckboxes.length;
+
+            if (confirm(`Are you sure you want to delete ${count} selected papers?`)) {
+                selectedCheckboxes.forEach(checkbox => {
+                    checkbox.closest('tr').remove();
+                });
+                showNotification(`${count} papers deleted successfully`, 'success');
+                document.getElementById('bulk-actions').style.display = 'none';
+            }
+        }
+
+        function bulkExport() {
+            const selectedCheckboxes = document.querySelectorAll('.paper-checkbox:checked');
+            const count = selectedCheckboxes.length;
+
+            showNotification(`Exporting ${count} papers...`, 'info');
+            setTimeout(() => {
+                showNotification('Export completed successfully!', 'success');
+            }, 2000);
+        }
+
+        function loadMorePapers() {
+            showNotification('Loading more papers...', 'info');
+            setTimeout(() => {
+                showNotification('Additional papers loaded!', 'success');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

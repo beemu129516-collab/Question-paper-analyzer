@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze - Q-Insight</title>
+    <meta name="description" content="Upload and analyze question papers to get detailed insights and predictions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">Q</div>
+                <span class="logo-text">Q-Insight</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analyze.html" class="active">Analyze</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">Q</div>
+                    <span class="sidebar-logo-text">Q-Insight</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-nav-item">
+                    <a href="index.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-home"></i></span>
+                        Home
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="analyze.html" class="sidebar-nav-link active">
+                        <span class="sidebar-nav-icon"><i class="fas fa-search"></i></span>
+                        Analyze
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="insights.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-lightbulb"></i></span>
+                        Insights
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="history.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-history"></i></span>
+                        History
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="settings.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-cog"></i></span>
+                        Settings
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="dashboard-title">Question Paper Analysis</h1>
+                    <p style="color: var(--medium-gray); margin: 0.5rem 0 0 0;">
+                        Upload your question papers and get detailed insights with AI-powered analysis
+                    </p>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">U</div>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="grid grid-2">
+                    <!-- File Upload -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-upload me-2"></i>Upload Question Paper</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="upload-area">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <h3>Drop your files here</h3>
+                                <p>or <span style="color: var(--primary-blue); cursor: pointer;">browse to upload</span></p>
+                                <p style="font-size: 0.875rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                    Supports PDF, DOCX, DOC, TXT, JPG, PNG (Max 10MB)
+                                </p>
+                            </div>
+                            <input type="file" id="file-input" accept=".pdf,.docx,.doc,.txt,.jpg,.png" style="display: none;">
+
+                            <!-- Progress Bar -->
+                            <div class="progress-bar" style="display: none;">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Settings -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-cogs me-2"></i>Analysis Settings</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="analysis-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <select id="subject" class="form-control" required>
+                                            <option value="">Select Subject</option>
+                                            <option value="computer-science">Computer Science</option>
+                                            <option value="mathematics">Mathematics</option>
+                                            <option value="physics">Physics</option>
+                                            <option value="chemistry">Chemistry</option>
+                                            <option value="biology">Biology</option>
+                                            <option value="english">English</option>
+                                            <option value="history">History</option>
+                                            <option value="economics">Economics</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="semester" class="form-label">Semester</label>
+                                        <select id="semester" class="form-control" required>
+                                            <option value="">Select Semester</option>
+                                            <option value="1">Semester 1</option>
+                                            <option value="2">Semester 2</option>
+                                            <option value="3">Semester 3</option>
+                                            <option value="4">Semester 4</option>
+                                            <option value="5">Semester 5</option>
+                                            <option value="6">Semester 6</option>
+                                            <option value="7">Semester 7</option>
+                                            <option value="8">Semester 8</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="year" class="form-label">Academic Year</label>
+                                        <select id="year" class="form-control" required>
+                                            <option value="">Select Year</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exam-type" class="form-label">Exam Type</label>
+                                        <select id="exam-type" class="form-control" required>
+                                            <option value="">Select Exam Type</option>
+                                            <option value="mid-term">Mid-term Exam</option>
+                                            <option value="final">Final Exam</option>
+                                            <option value="quiz">Quiz</option>
+                                            <option value="assignment">Assignment</option>
+                                            <option value="practical">Practical Exam</option>
+                                            <option value="viva">Viva Voce</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Analysis Options</label>
+                                    <div class="d-flex flex-wrap" style="gap: 1rem;">
+                                        <label class="d-flex align-center" style="cursor: pointer;">
+                                            <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                            <span>Trend Analysis</span>
+                                        </label>
+                                        <label class="d-flex align-center" style="cursor: pointer;">
+                                            <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                            <span>Difficulty Assessment</span>
+                                        </label>
+                                        <label class="d-flex align-center" style="cursor: pointer;">
+                                            <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                            <span>Topic Distribution</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section (Hidden initially) -->
+            <div class="results-section" style="display: none;">
+                <!-- Overview Cards -->
+                <div class="grid grid-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 0.5rem;">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-navy);" id="total-questions">0</div>
+                            <div style="color: var(--medium-gray);">Total Questions</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-navy);" id="repeated-questions">0</div>
+                            <div style="color: var(--medium-gray);">Repeated Questions</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div style="font-size: 2rem; color: var(--warning); margin-bottom: 0.5rem;">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-navy);" id="difficulty-level">-</div>
+                            <div style="color: var(--medium-gray);">Difficulty Level</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 0.5rem;">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-navy);" id="prediction-accuracy">95%</div>
+                            <div style="color: var(--medium-gray);">Prediction Accuracy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analysis -->
+                <div class="grid grid-2">
+                    <!-- Topic Distribution -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-chart-pie me-2"></i>Topic Distribution</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Unit 1: Introduction</span>
+                                        <span>35%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 35%; background: var(--gradient-blue);"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Unit 2: Data Structures</span>
+                                        <span>28%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 28%; background: var(--gradient-blue);"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Unit 3: Algorithms</span>
+                                        <span>22%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 22%; background: var(--gradient-blue);"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Unit 4: Database</span>
+                                        <span>15%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 15%; background: var(--gradient-blue);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Important Units -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-star me-2"></i>Most Important Units</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul id="important-units" style="list-style: none; padding: 0;">
+                                <li style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md);">
+                                    <div style="width: 40px; height: 40px; background: var(--gradient-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 1rem; font-weight: bold;">1</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--primary-navy);">Unit 1: Introduction to Programming</div>
+                                        <div style="font-size: 0.875rem; color: var(--medium-gray);">Appeared in 4 out of 5 papers</div>
+                                    </div>
+                                </li>
+
+                                <li style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md);">
+                                    <div style="width: 40px; height: 40px; background: var(--gradient-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 1rem; font-weight: bold;">2</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--primary-navy);">Unit 2: Data Structures</div>
+                                        <div style="font-size: 0.875rem; color: var(--medium-gray);">High frequency in recent exams</div>
+                                    </div>
+                                </li>
+
+                                <li style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md);">
+                                    <div style="width: 40px; height: 40px; background: var(--gradient-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 1rem; font-weight: bold;">3</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--primary-navy);">Unit 3: Algorithms</div>
+                                        <div style="font-size: 0.875rem; color: var(--medium-gray);">Complex problems expected</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Insights -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-robot me-2"></i>AI Smart Insights</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="ai-insights" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                            <div class="insight-card" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md); border-left: 4px solid var(--primary-blue);">
+                                <i class="fas fa-lightbulb text-warning" style="font-size: 1.5rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy); margin-bottom: 0.25rem;">Database Queries</div>
+                                    <div style="color: var(--medium-gray);">Highly repeated topic with 85% appearance rate in recent papers</div>
+                                </div>
+                            </div>
+
+                            <div class="insight-card" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md); border-left: 4px solid var(--success);">
+                                <i class="fas fa-lightbulb text-warning" style="font-size: 1.5rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy); margin-bottom: 0.25rem;">Long Answer Questions</div>
+                                    <div style="color: var(--medium-gray);">Dominates 60% of the question paper - focus on detailed explanations</div>
+                                </div>
+                            </div>
+
+                            <div class="insight-card" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--soft-white); border-radius: var(--radius-md); border-left: 4px solid var(--warning);">
+                                <i class="fas fa-lightbulb text-warning" style="font-size: 1.5rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy); margin-bottom: 0.25rem;">Previous Year Similarity</div>
+                                    <div style="color: var(--medium-gray);">75% similarity with last year's paper - review past solutions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-center" style="gap: 1rem; margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="window.location.reload()">
+                        <i class="fas fa-redo me-2"></i>Analyze Another Paper
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.location.href='insights.html'">
+                        <i class="fas fa-chart-line me-2"></i>View Detailed Insights
+                    </button>
+                    <button class="btn btn-success" onclick="saveAnalysis()">
+                        <i class="fas fa-save me-2"></i>Save Analysis
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function saveAnalysis() {
+            showNotification('Analysis saved to history!', 'success');
+            setTimeout(() => {
+                window.location.href = 'history.html';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

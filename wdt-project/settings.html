@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Q-Insight</title>
+    <meta name="description" content="Customize your Q-Insight experience with personal settings and preferences.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">Q</div>
+                <span class="logo-text">Q-Insight</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analyze.html">Analyze</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="settings.html" class="active">Settings</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">Q</div>
+                    <span class="sidebar-logo-text">Q-Insight</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-nav-item">
+                    <a href="index.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-home"></i></span>
+                        Home
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="analyze.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-search"></i></span>
+                        Analyze
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="insights.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-lightbulb"></i></span>
+                        Insights
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="history.html" class="sidebar-nav-link">
+                        <span class="sidebar-nav-icon"><i class="fas fa-history"></i></span>
+                        History
+                    </a>
+                </div>
+                <div class="sidebar-nav-item">
+                    <a href="settings.html" class="sidebar-nav-link active">
+                        <span class="sidebar-nav-icon"><i class="fas fa-cog"></i></span>
+                        Settings
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="dashboard-title">Settings</h1>
+                    <p style="color: var(--medium-gray); margin: 0.5rem 0 0 0;">
+                        Customize your experience and manage your account preferences
+                    </p>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">U</div>
+                </div>
+            </div>
+
+            <!-- Settings Grid -->
+            <div class="grid grid-2">
+                <!-- Profile Settings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-user me-2"></i>Profile Settings</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label for="full-name" class="form-label">Full Name</label>
+                                <input type="text" id="full-name" class="form-input" value="John Doe" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-input" value="john.doe@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="institution" class="form-label">Institution</label>
+                                <input type="text" id="institution" class="form-input" value="University of Technology" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="department" class="form-label">Department</label>
+                                <select id="department" class="form-select">
+                                    <option value="computer-science" selected>Computer Science</option>
+                                    <option value="mathematics">Mathematics</option>
+                                    <option value="physics">Physics</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="business">Business</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bio" class="form-label">Bio</label>
+                                <textarea id="bio" class="form-textarea" rows="3" placeholder="Tell us about yourself...">Passionate about technology and education. Always looking to improve learning experiences through data-driven insights.</textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-save me-2"></i>Save Profile
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Appearance Settings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-palette me-2"></i>Appearance</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Theme</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Choose your preferred theme</div>
+                                </div>
+                                <div class="theme-toggle">
+                                    <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+                                    <label for="theme-toggle" class="theme-toggle-label">
+                                        <span class="theme-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Compact Mode</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Reduce spacing for more content</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="compact-mode">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Animations</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Enable smooth transitions</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="animations" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Sidebar Collapsed</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Keep sidebar minimized</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="sidebar-collapsed">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-bell me-2"></i>Notifications</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Email Notifications</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Receive updates via email</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="email-notifications" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Analysis Complete</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Notify when analysis finishes</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="analysis-notifications" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Weekly Reports</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Get weekly activity summaries</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="weekly-reports" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Marketing Updates</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Receive product updates and tips</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="marketing-updates">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Privacy & Security -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-shield-alt me-2"></i>Privacy & Security</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Data Sharing</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Share anonymized data for improvements</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="data-sharing">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Two-Factor Authentication</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Add extra security to your account</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="two-factor">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Session Timeout</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Auto-logout after inactivity</div>
+                                </div>
+                                <select class="form-select" style="width: 120px;">
+                                    <option value="30">30 min</option>
+                                    <option value="60" selected>1 hour</option>
+                                    <option value="120">2 hours</option>
+                                    <option value="never">Never</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                            <button class="btn btn-outline" style="width: 100%; margin-bottom: 0.5rem;">
+                                <i class="fas fa-key me-2"></i>Change Password
+                            </button>
+                            <button class="btn btn-outline" style="width: 100%; margin-bottom: 0.5rem;">
+                                <i class="fas fa-download me-2"></i>Export Data
+                            </button>
+                            <button class="btn btn-danger" style="width: 100%;">
+                                <i class="fas fa-user-times me-2"></i>Delete Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Preferences -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-cogs me-2"></i>Analysis Preferences</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="default-language" class="form-label">Default Analysis Language</label>
+                            <select id="default-language" class="form-select">
+                                <option value="english" selected>English</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="german">German</option>
+                                <option value="hindi">Hindi</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="difficulty-threshold" class="form-label">Difficulty Alert Threshold</label>
+                            <select id="difficulty-threshold" class="form-select">
+                                <option value="easy">Alert on Easy</option>
+                                <option value="medium" selected>Alert on Medium+</option>
+                                <option value="hard">Alert on Hard only</option>
+                                <option value="never">Never alert</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="auto-save" class="form-label">Auto-save Analysis Results</label>
+                            <select id="auto-save" class="form-select">
+                                <option value="immediate" selected>Immediately</option>
+                                <option value="5min">After 5 minutes</option>
+                                <option value="15min">After 15 minutes</option>
+                                <option value="manual">Manual only</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Detailed Reports</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Include comprehensive analysis details</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="detailed-reports" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Smart Suggestions</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">AI-powered study recommendations</div>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="smart-suggestions" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storage & Data -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-database me-2"></i>Storage & Data</h3>
+                    </div>
+                    <div class="card-body">
+                        <div style="margin-bottom: 2rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 600; color: var(--primary-navy);">Storage Used</span>
+                                <span style="color: var(--medium-gray);">2.4 GB of 10 GB</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--soft-white); border-radius: 4px; overflow: hidden;">
+                                <div style="width: 24%; height: 100%; background: var(--gradient-blue); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Auto-cleanup</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">Delete old analyses automatically</div>
+                                </div>
+                                <select class="form-select" style="width: 120px;">
+                                    <option value="never">Never</option>
+                                    <option value="30">30 days</option>
+                                    <option value="90" selected>90 days</option>
+                                    <option value="180">180 days</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-navy);">Backup Frequency</div>
+                                    <div style="color: var(--medium-gray); font-size: 0.875rem;">How often to backup your data</div>
+                                </div>
+                                <select class="form-select" style="width: 120px;">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="manual">Manual</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                            <button class="btn btn-outline" style="width: 100%; margin-bottom: 0.5rem;">
+                                <i class="fas fa-cloud-download me-2"></i>Download Backup
+                            </button>
+                            <button class="btn btn-outline" style="width: 100%; margin-bottom: 0.5rem;">
+                                <i class="fas fa-cloud-upload me-2"></i>Restore from Backup
+                            </button>
+                            <button class="btn btn-outline" style="width: 100%;">
+                                <i class="fas fa-broom me-2"></i>Clear Cache
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Settings Button -->
+            <div class="card">
+                <div class="card-body text-center">
+                    <button class="btn btn-primary btn-lg" onclick="saveAllSettings()">
+                        <i class="fas fa-save me-2"></i>Save All Settings
+                    </button>
+                    <p style="color: var(--medium-gray); margin-top: 1rem; font-size: 0.875rem;">
+                        Changes are automatically saved for most settings. Click to save profile changes.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Settings page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSettings();
+            loadSavedSettings();
+        });
+
+        function initializeSettings() {
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('change', function() {
+                applyTheme(this.checked ? 'dark' : 'light');
+                saveSetting('theme', this.checked ? 'dark' : 'light');
+            });
+
+            // Other toggles
+            const toggles = ['compact-mode', 'animations', 'sidebar-collapsed', 'email-notifications', 'analysis-notifications', 'weekly-reports', 'marketing-updates', 'data-sharing', 'two-factor', 'detailed-reports', 'smart-suggestions'];
+
+            toggles.forEach(id => {
+                const toggle = document.getElementById(id);
+                toggle.addEventListener('change', function() {
+                    saveSetting(id, this.checked);
+                });
+            });
+
+            // Select elements
+            const selects = ['department', 'default-language', 'difficulty-threshold', 'auto-save'];
+            selects.forEach(id => {
+                const select = document.getElementById(id);
+                select.addEventListener('change', function() {
+                    saveSetting(id, this.value);
+                });
+            });
+
+            // Profile form
+            const profileForm = document.getElementById('profile-form');
+            profileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveProfile();
+            });
+        }
+
+        function loadSavedSettings() {
+            // Load theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.checked = savedTheme === 'dark';
+            applyTheme(savedTheme);
+
+            // Load other settings
+            const settings = ['compact-mode', 'animations', 'sidebar-collapsed', 'email-notifications', 'analysis-notifications', 'weekly-reports', 'marketing-updates', 'data-sharing', 'two-factor', 'detailed-reports', 'smart-suggestions'];
+
+            settings.forEach(setting => {
+                const saved = localStorage.getItem(setting);
+                if (saved !== null) {
+                    document.getElementById(setting).checked = saved === 'true';
+                }
+            });
+
+            // Load select values
+            const selects = ['department', 'default-language', 'difficulty-threshold', 'auto-save'];
+            selects.forEach(select => {
+                const saved = localStorage.getItem(select);
+                if (saved) {
+                    document.getElementById(select).value = saved;
+                }
+            });
+        }
+
+        function saveSetting(key, value) {
+            localStorage.setItem(key, value);
+            showNotification('Setting saved successfully', 'success');
+        }
+
+        function saveProfile() {
+            const profileData = {
+                fullName: document.getElementById('full-name').value,
+                email: document.getElementById('email').value,
+                institution: document.getElementById('institution').value,
+                department: document.getElementById('department').value,
+                bio: document.getElementById('bio').value
+            };
+
+            localStorage.setItem('profile', JSON.stringify(profileData));
+            showNotification('Profile updated successfully', 'success');
+        }
+
+        function saveAllSettings() {
+            // Force save all current settings
+            const allSettings = {
+                theme: document.getElementById('theme-toggle').checked ? 'dark' : 'light',
+                compactMode: document.getElementById('compact-mode').checked,
+                animations: document.getElementById('animations').checked,
+                sidebarCollapsed: document.getElementById('sidebar-collapsed').checked,
+                emailNotifications: document.getElementById('email-notifications').checked,
+                analysisNotifications: document.getElementById('analysis-notifications').checked,
+                weeklyReports: document.getElementById('weekly-reports').checked,
+                marketingUpdates: document.getElementById('marketing-updates').checked,
+                dataSharing: document.getElementById('data-sharing').checked,
+                twoFactor: document.getElementById('two-factor').checked,
+                detailedReports: document.getElementById('detailed-reports').checked,
+                smartSuggestions: document.getElementById('smart-suggestions').checked,
+                department: document.getElementById('department').value,
+                defaultLanguage: document.getElementById('default-language').value,
+                difficultyThreshold: document.getElementById('difficulty-threshold').value,
+                autoSave: document.getElementById('auto-save').value
+            };
+
+            localStorage.setItem('allSettings', JSON.stringify(allSettings));
+            showNotification('All settings saved successfully!', 'success');
+        }
+    </script>
+</body>
+</html>
